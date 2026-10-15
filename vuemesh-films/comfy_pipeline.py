@@ -77,6 +77,7 @@ def load_json(path):
 # Each thing the script sets is found by the node's title first (rename a node in ComfyUI to
 # one of these to be exact), then by what the node is. "inspect" shows what was found.
 
+MUSIC_SECONDS = ("seconds", "duration", "audio_duration")
 TITLES = {
     "prompt": ("VIDEO_PROMPT", "IMAGE_PROMPT", "PROMPT", "POSITIVE"),
     "negative": ("NEGATIVE",),
@@ -175,13 +176,11 @@ def find_roles(wf, stage):
             roles["tags"].append(nid)
         if isinstance(ins.get("lyrics"), str):
             roles["lyrics"].append(nid)
-        if any(isinstance(ins.get(k), (int, float)) and not isinstance(ins.get(k), bool) for k in ("seconds", "duration", "audio_duration")):
-            roles["seconds"].append(nid)
-        if isinstance(ins.get("bpm"), (int, float)) and not isinstance(ins.get("bpm"), bool):
-            roles["bpm"].append(nid)
     for role, ids in by_title.items():
         roles[role] = ids
     roles["seed"] = list(dict.fromkeys(nid for nid, _ in seed_slots(wf)))
+    roles["seconds"] = list(dict.fromkeys(nid for nid, _ in number_slots(wf, MUSIC_SECONDS, TITLES["seconds"])))
+    roles["bpm"] = list(dict.fromkeys(nid for nid, _ in number_slots(wf, ("bpm",), TITLES["bpm"])))
     return roles
 
 
@@ -221,6 +220,35 @@ def seed_slots(wf):
             seen.add(x)
             out.append(x)
     return out
+
+
+def _is_num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def number_slots(wf, keys, titled=()):
+    """[(node_id, input)] holding a number: typed into the node, or, when it comes from another node
+    (a PrimitiveFloat/PrimitiveInt such as "Song Duration"), that node's value. A node titled one of
+    `titled` counts too. Same idea as the seed."""
+    slots = []
+    for nid, n in wf.items():
+        ins = n.get("inputs", {})
+        if title(n) in titled:
+            slots += [(nid, k) for k, v in ins.items() if _is_num(v)]
+        for k in keys:
+            v = ins.get(k)
+            if _is_num(v):
+                slots.append((nid, k))
+            elif is_link(v) and v[0] in wf and _is_num(wf[v[0]].get("inputs", {}).get("value")):
+                slots.append((v[0], "value"))
+    return list(dict.fromkeys(slots))
+
+
+def set_numbers(wf, keys, value, titled=()):
+    """Set every place the number lives (a whole number stays whole, a decimal stays a decimal)."""
+    for nid, k in number_slots(wf, keys, titled):
+        old = wf[nid]["inputs"][k]
+        wf[nid]["inputs"][k] = float(value) if isinstance(old, float) else int(round(value))
 
 
 def set_seed(wf, value):
@@ -462,9 +490,9 @@ def stage_music(s, args):
                         ins[k] = m["tags"]
                         break
             set_inputs(wf, roles["lyrics"], [(("lyrics",), m.get("lyrics", "[instrumental]"))])
-            set_inputs(wf, roles["seconds"], [(("seconds", "duration", "audio_duration"), seconds)])
+            set_numbers(wf, MUSIC_SECONDS, seconds, TITLES["seconds"])
             if m.get("bpm"):
-                set_inputs(wf, roles["bpm"], [(("bpm",), m["bpm"])])
+                set_numbers(wf, ("bpm",), m["bpm"], TITLES["bpm"])
             # (ACE-Step 1.5 also takes a key and a time signature: optional per film)
             if m.get("keyscale"):
                 set_inputs(wf, roles["tags"], [(("keyscale",), m["keyscale"])])

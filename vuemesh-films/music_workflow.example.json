@@ -1,0 +1,88 @@
+{
+ "40": {
+  "class_type": "CheckpointLoaderSimple",
+  "inputs": {
+   "ckpt_name": "ace_step_1.5_xl_base.safetensors"
+  }
+ },
+ "14": {
+  "class_type": "TextEncodeAceStepAudio",
+  "inputs": {
+   "tags": "pop, upbeat",
+   "lyrics": "[verse]\nla la la",
+   "lyrics_strength": 0.99,
+   "bpm": 120,
+   "clip": [
+    "40",
+    1
+   ]
+  }
+ },
+ "17": {
+  "class_type": "EmptyAceStepLatentAudio",
+  "inputs": {
+   "seconds": 120,
+   "batch_size": 1
+  }
+ },
+ "52": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 1,
+   "steps": 50,
+   "cfg": 5,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "40",
+    0
+   ],
+   "positive": [
+    "14",
+    0
+   ],
+   "negative": [
+    "44",
+    0
+   ],
+   "latent_image": [
+    "17",
+    0
+   ]
+  }
+ },
+ "44": {
+  "class_type": "ConditioningZeroOut",
+  "inputs": {
+   "conditioning": [
+    "14",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "52",
+    0
+   ],
+   "vae": [
+    "40",
+    2
+   ]
+  }
+ },
+ "59": {
+  "class_type": "SaveAudioMP3",
+  "inputs": {
+   "filename_prefix": "audio/ComfyUI",
+   "quality": "V0",
+   "audio": [
+    "18",
+    0
+   ]
+  }
+ }
+}

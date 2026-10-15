@@ -1,0 +1,9 @@
+{
+  "server": "http://127.0.0.1:8188",
+  "image_workflow": "image_workflow.json",
+  "video_workflow": "video_workflow.json",
+  "shots": "shots.json",
+  "out": "renders",
+  "timeout_image_s": 900,
+  "timeout_video_s": 3600
+}

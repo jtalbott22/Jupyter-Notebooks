@@ -1,0 +1,497 @@
+{
+  "about": "VUEMesh films, two stages per shot: image (Qwen-Image, a still) then motion (LTX, image to video). Screens in the stills are left plain white: the VUEMesh screens (codes, the studio, phones) go on after, as overlays, so they're readable and exact. People and places are fictional; no real teams, brands or logos. Each film's \"edit\" is its cut: the part of each clip used, its speed, and how it comes in (cut, dissolve, through black, or a flash through white). Each film's \"music\" is its instrumental bed, made with ACE-Step (or replace it with your own recording).",
+  "defaults": {
+    "image": {
+      "width": 1664,
+      "height": 928,
+      "variants": 4,
+      "negative": "cartoon, illustration, 3d render, plastic skin, deformed hands, extra fingers, warped faces, text artifacts, watermark, logo, brand names, low resolution, oversaturated"
+    },
+    "video": {
+      "width": 1280,
+      "height": 704,
+      "fps": 24,
+      "negative": "worst quality, jittery, flickering, morphing faces, warped hands, inconsistent motion, sudden cuts, distorted, blurry, text appearing, watermark"
+    }
+  },
+  "films": [
+    {
+      "id": "wedding",
+      "title": "First dance",
+      "story": "Guests check in at a kiosk, raise their phones around the dance floor, and the couple's first dance is cut live from every angle. Later the couple watch the finished film.",
+      "shots": [
+        {
+          "id": "01-venue",
+          "seconds": 4,
+          "overlay": null,
+          "image": "Golden hour at a rustic barn wedding venue, wide establishing shot. Warm string lights hang between wooden beams, round tables with white linen and candles, guests in summer formal wear arriving and greeting each other. Soft sunset light pours through tall open doors. Cinematic, shallow depth of field, 35mm film look, natural colours.",
+          "motion": "Slow dolly forward through the open barn doors toward the reception. Guests drift across frame, laughing and hugging. String lights sway slightly. The sunset glow flickers through the doorway. Steady, smooth camera."
+        },
+        {
+          "id": "02-kiosk",
+          "seconds": 4,
+          "overlay": "kiosk: the VUEMesh join code, pulsing, with the show's name",
+          "image": "Close medium shot of a sleek tablet kiosk on a white pedestal stand at a wedding reception entrance, flowers and a hand-lettered welcome sign beside it; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. A smiling guest in a navy suit holds up his phone toward the tablet. Warm string lights bokeh behind. Cinematic, realistic.",
+          "motion": "The guest raises his phone to the tablet and holds it steady for a moment, then lowers it and smiles. The camera holds still on a tripod. The tablet stays fixed in place in the frame. Background lights twinkle softly."
+        },
+        {
+          "id": "03-phone-in",
+          "seconds": 4,
+          "overlay": "phone screen: \"You're in\", then the camera view",
+          "image": "Over-the-shoulder close-up of a woman in a green dress holding a modern smartphone in landscape at a wedding reception; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Beyond the phone, a softly blurred dance floor with fairy lights. Realistic, shallow depth of field.",
+          "motion": "She turns the phone toward the dance floor and steadies it with both hands. The camera stays locked behind her shoulder; the phone moves slowly and stays in frame. Lights in the background shimmer."
+        },
+        {
+          "id": "04-circle",
+          "seconds": 5,
+          "overlay": null,
+          "image": "Wide shot of a wedding dance floor ringed by guests, several of them holding phones up in landscape from different sides, filming. Warm string lights overhead, a wooden floor, candles on tables at the edges. Joyful, cinematic, realistic.",
+          "motion": "A slow, smooth crane up and back revealing the ring of guests filming from all sides. Guests shift their weight and smile, phones held steady. Gentle lens flare from the lights."
+        },
+        {
+          "id": "05-dance-wide",
+          "seconds": 6,
+          "overlay": "small on-air tag: \"CAM 1 · Rosa\"",
+          "image": "The bride in a flowing ivory gown and the groom in a charcoal suit share their first dance in the middle of a wooden dance floor, wide shot from guest eye level. Warm string lights and soft haze, guests blurred at the edges. Romantic, cinematic, realistic.",
+          "motion": "The couple sway and turn slowly, then the groom spins the bride; her gown flares. A slow orbit around them from the edge of the floor. Haze drifts through the lights."
+        },
+        {
+          "id": "06-dance-close",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 2 · Dev\"",
+          "image": "Intimate close-up of the bride resting her cheek on the groom's shoulder during their first dance, her eyes closed, smiling. Warm practical lights, creamy bokeh. Shot slightly handheld from a guest's phone height. Realistic skin, natural tones.",
+          "motion": "She opens her eyes and laughs softly as he whispers to her. Slight natural handheld drift, gentle and steady. Bokeh lights pulse."
+        },
+        {
+          "id": "07-dance-high",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 3 · Priya (balcony)\"",
+          "image": "High angle from a hayloft balcony looking down at a couple's first dance, the dance floor encircled by guests, warm string lights crisscrossing the frame. Cinematic, realistic.",
+          "motion": "The couple turn slowly below; guests at the edge sway and some raise glasses. The camera holds high and still, with a very slight push in."
+        },
+        {
+          "id": "08-booth",
+          "seconds": 5,
+          "overlay": "laptop screen: the VUEMesh studio, multiviewer with the Auto Director cutting between three phones",
+          "image": "A laptop open on the DJ table at a wedding reception, beside a mixer and headphones; the laptop its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. The DJ, a young woman with headphones around her neck, glances at it and smiles. Dance floor glowing behind. Realistic, cinematic.",
+          "motion": "The DJ nods to the music and glances at the laptop, then back to the floor. The camera holds steady on a tripod; the laptop stays fixed in frame. Coloured lights wash slowly across the table."
+        },
+        {
+          "id": "09-family",
+          "seconds": 4,
+          "overlay": null,
+          "image": "An elderly couple at a reception table watching the first dance with tears of joy, the grandmother's hand on her heart. Candlelight and string lights, warm and soft. Realistic, cinematic.",
+          "motion": "The grandmother wipes a tear and smiles; the grandfather takes her hand. Slow gentle push in. Candles flicker."
+        },
+        {
+          "id": "10-film",
+          "seconds": 5,
+          "overlay": "phone screen: the finished film playing, with \"Shot by Rosa, Dev, Priya\"",
+          "image": "The next morning, the newlywed couple in cosy sweaters sit on a sofa by a sunny window, sharing a phone held between them in landscape; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Soft morning light, relaxed and happy. Realistic, natural.",
+          "motion": "They watch the phone, then look at each other and laugh. The camera holds still; the phone stays steady between them. Sunlight shifts softly through the curtains."
+        }
+      ],
+      "edit": {
+        "intent": "Romantic and unhurried: let the moments breathe, soft dissolves, the first dance the longest and slightly slowed.",
+        "look": "warm",
+        "title": {
+          "on": "01-venue",
+          "text": "First Dance",
+          "sub": "Every guest is a camera",
+          "from": 0.9,
+          "to": 3.2
+        },
+        "end": {
+          "text": "Their film. Shot by everyone who loves them.",
+          "sub": "vuemesh.com",
+          "seconds": 3.2
+        },
+        "cuts": [
+          {
+            "shot": "01-venue",
+            "in": 0.4,
+            "out": 3.8,
+            "into": "black",
+            "dur": 1.0
+          },
+          {
+            "shot": "02-kiosk",
+            "in": 0.5,
+            "out": 3.1,
+            "into": "dissolve",
+            "dur": 0.4
+          },
+          {
+            "shot": "03-phone-in",
+            "in": 0.6,
+            "out": 2.9,
+            "into": "cut"
+          },
+          {
+            "shot": "04-circle",
+            "in": 0.5,
+            "out": 3.9,
+            "into": "dissolve",
+            "dur": 0.5
+          },
+          {
+            "shot": "05-dance-wide",
+            "in": 0.4,
+            "out": 5.4,
+            "speed": 0.8,
+            "into": "dissolve",
+            "dur": 0.6
+          },
+          {
+            "shot": "06-dance-close",
+            "in": 0.5,
+            "out": 3.5,
+            "into": "dissolve",
+            "dur": 0.5
+          },
+          {
+            "shot": "07-dance-high",
+            "in": 0.4,
+            "out": 3.4,
+            "into": "dissolve",
+            "dur": 0.5
+          },
+          {
+            "shot": "08-booth",
+            "in": 0.6,
+            "out": 3.4,
+            "into": "cut"
+          },
+          {
+            "shot": "09-family",
+            "in": 0.5,
+            "out": 3.5,
+            "into": "dissolve",
+            "dur": 0.6
+          },
+          {
+            "shot": "10-film",
+            "in": 0.5,
+            "out": 4.5,
+            "into": "dissolve",
+            "dur": 0.8
+          }
+        ]
+      },
+      "music": {
+        "tags": "instrumental, cinematic wedding underscore, warm fingerpicked acoustic guitar, soft felt piano, gentle string swell, romantic, heartfelt, tender, major key, 72 bpm",
+        "lyrics": "[instrumental]",
+        "bpm": 72,
+        "variants": 3,
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+      }
+    },
+    {
+      "id": "concert",
+      "title": "Concert",
+      "story": "The code is on the LED wall; the crowd becomes the camera crew, front of house runs the studio on a laptop, a crew member works the cameras from a second screen.",
+      "shots": [
+        {
+          "id": "01-line",
+          "seconds": 4,
+          "overlay": "poster: the show's join code",
+          "image": "Night street outside a music venue, a line of excited fans under a glowing marquee, a large poster stand by the door; the poster its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Wet pavement reflecting neon, urban, cinematic, realistic.",
+          "motion": "The line shuffles forward; a fan points at the poster and her friend lifts a phone toward it. Slow lateral tracking shot along the line. Neon reflections ripple on the wet street."
+        },
+        {
+          "id": "02-stage",
+          "seconds": 5,
+          "overlay": null,
+          "image": "A rock band on a club stage in saturated magenta and cyan beams, haze filling the air, a packed crowd in silhouette with dozens of phones raised. Energetic, cinematic concert photography, realistic.",
+          "motion": "The lead singer leans into the mic as beams sweep across the haze; the crowd jumps in time. Slow push in from the back of the crowd toward the stage."
+        },
+        {
+          "id": "03-wall",
+          "seconds": 4,
+          "overlay": "LED wall: the join code, large, with \"Scan to film the show\"",
+          "image": "Wide shot from the crowd of a large LED video wall behind the stage, the band small in the foreground; the LED wall its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Fans in the front rows hold up phones toward it. Stage lights, haze, realistic.",
+          "motion": "Fans lift their phones toward the wall and hold them steady. The camera holds on a tripod; the wall stays fixed in frame. Beams pulse across the haze."
+        },
+        {
+          "id": "04-guitar",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 4 · front row\"",
+          "image": "Close-up of a guitarist's hands on a worn sunburst electric guitar mid-solo, sweat on his forearm, sparks of stage light, shot from the front row at phone height. Gritty, realistic, shallow depth of field.",
+          "motion": "His fingers race up the neck and bend a note; he throws his head back. Slight handheld movement, steady. Lights strobe gently behind."
+        },
+        {
+          "id": "05-drums",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 2 · side stage\"",
+          "image": "Side-stage view of a drummer behind a kit, cymbals catching amber light, drumsticks a blur, the crowd glowing beyond. Realistic, cinematic.",
+          "motion": "The drummer hits a fill and crashes the cymbal; sticks blur. The camera holds from the wings with a slow slide."
+        },
+        {
+          "id": "06-balcony",
+          "seconds": 4,
+          "overlay": null,
+          "image": "From the balcony of a theatre-style club looking down over a sea of fans with phones raised, the stage blazing with light. Realistic, wide, cinematic.",
+          "motion": "The crowd surges and claps overhead in rhythm; phones sway like a field. Slow pan across the balcony rail."
+        },
+        {
+          "id": "07-foh",
+          "seconds": 5,
+          "overlay": "laptop screen: the VUEMesh studio, program and phones, audio console meters",
+          "image": "Front-of-house mixing position at a concert: a large mixing desk with glowing faders and a laptop beside it; the laptop its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. A sound engineer in a black t-shirt rides a fader, stage lights in the distance. Realistic.",
+          "motion": "The engineer pushes a fader and glances at the laptop, nodding. The camera holds steady; the laptop stays fixed in frame. Meters flicker on the desk."
+        },
+        {
+          "id": "08-crew",
+          "seconds": 4,
+          "overlay": "tablet screen: VUEMesh camera control, a strip per phone, one tapped",
+          "image": "A crew member with a headset stands at the side of the room holding a tablet; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Concert lights spill across her face. Focused, realistic.",
+          "motion": "She taps the tablet and speaks into her headset, then looks up at the stage. The camera holds still; the tablet stays steady in her hands."
+        },
+        {
+          "id": "09-encore",
+          "seconds": 5,
+          "overlay": null,
+          "image": "Encore: confetti cannons burst over a cheering crowd, the band with arms raised in a blaze of white light, phones held high everywhere. Euphoric, cinematic, realistic.",
+          "motion": "Confetti swirls down through the light as the crowd jumps; the singer raises the mic stand. Slow-motion feel, gentle push in."
+        },
+        {
+          "id": "10-recap",
+          "seconds": 4,
+          "overlay": "phone screen: the finished film, \"Shot by you\" credit",
+          "image": "After the show, a young fan on a late-night train holds her phone in landscape, smiling at it; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. City lights stream past the window. Realistic, cinematic.",
+          "motion": "She grins and turns the phone to show her friend beside her. The camera holds; the phone stays steady. Lights slide past outside."
+        }
+      ],
+      "edit": {
+        "intent": "Energetic: quick cuts on the beat, flashes on the big reveals, the encore slowed for the payoff.",
+        "look": "punchy",
+        "title": {
+          "on": "01-line",
+          "text": "Live Tonight",
+          "sub": "The crowd is the camera crew",
+          "from": 0.4,
+          "to": 2.1
+        },
+        "end": {
+          "text": "The crowd is the camera crew.",
+          "sub": "vuemesh.com",
+          "seconds": 3.0
+        },
+        "cuts": [
+          {
+            "shot": "01-line",
+            "in": 0.4,
+            "out": 2.6,
+            "into": "black",
+            "dur": 0.5
+          },
+          {
+            "shot": "02-stage",
+            "in": 0.3,
+            "out": 2.7,
+            "into": "cut"
+          },
+          {
+            "shot": "03-wall",
+            "in": 0.5,
+            "out": 2.8,
+            "into": "flash",
+            "dur": 0.2
+          },
+          {
+            "shot": "04-guitar",
+            "in": 0.4,
+            "out": 2.2,
+            "into": "cut"
+          },
+          {
+            "shot": "05-drums",
+            "in": 0.4,
+            "out": 2.0,
+            "into": "cut"
+          },
+          {
+            "shot": "06-balcony",
+            "in": 0.4,
+            "out": 2.6,
+            "into": "cut"
+          },
+          {
+            "shot": "07-foh",
+            "in": 0.5,
+            "out": 2.9,
+            "into": "cut"
+          },
+          {
+            "shot": "08-crew",
+            "in": 0.5,
+            "out": 2.5,
+            "into": "cut"
+          },
+          {
+            "shot": "09-encore",
+            "in": 0.3,
+            "out": 4.3,
+            "speed": 0.85,
+            "into": "flash",
+            "dur": 0.25
+          },
+          {
+            "shot": "10-recap",
+            "in": 0.5,
+            "out": 3.5,
+            "into": "dissolve",
+            "dur": 0.6
+          }
+        ]
+      },
+      "music": {
+        "tags": "instrumental, indie rock, driving live drums, overdriven electric guitar riff, punchy bass, energetic, anthemic, crowd energy, 128 bpm",
+        "lyrics": "[instrumental]",
+        "bpm": 128,
+        "variants": 3,
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+      }
+    },
+    {
+      "id": "arena",
+      "title": "Arena",
+      "story": "The code flashes on the big screen; fans in every section become cameras; one laptop in press row cuts the show and puts a fan's feed up on the big screen.",
+      "shots": [
+        {
+          "id": "01-arena",
+          "seconds": 4,
+          "overlay": null,
+          "image": "A modern indoor basketball arena at dusk seen from outside, glass facade glowing, crowds streaming in, banners without any logos or text. Cinematic, realistic, wide.",
+          "motion": "A slow aerial drift toward the entrance as fans stream inside. Lights in the facade brighten as night falls."
+        },
+        {
+          "id": "02-board",
+          "seconds": 4,
+          "overlay": "centre-hung board: the join code, huge, with \"Get on the big screen\"",
+          "image": "A huge centre-hung scoreboard over a packed basketball arena, seen from the lower bowl; its four big screens are plain, evenly lit white rectangles with nothing on them. Arena lights, crowd in team colours without logos. Realistic, wide.",
+          "motion": "Fans look up at the board and raise their phones toward it. The camera holds on a tripod; the board stays fixed in frame. Arena lights pulse."
+        },
+        {
+          "id": "03-fans",
+          "seconds": 4,
+          "overlay": null,
+          "image": "A group of excited fans in face paint and plain jerseys in the upper deck, holding up phones in landscape, laughing. Arena lights behind. Realistic, energetic.",
+          "motion": "They cheer and wave, then steady their phones toward the court. Light handheld energy, smooth."
+        },
+        {
+          "id": "04-dunk",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 7 · courtside\"",
+          "image": "From courtside at phone height, a player in a plain red jersey without logos soars toward the rim for a dunk, the crowd blurred behind. Frozen intensity, realistic sports photography.",
+          "motion": "The player rises and slams the ball through the hoop; the rim shakes and the crowd erupts. The camera tracks the leap smoothly."
+        },
+        {
+          "id": "05-reaction",
+          "seconds": 4,
+          "overlay": "small on-air tag: \"CAM 12 · section 214\"",
+          "image": "Wide shot of an arena crowd exploding in celebration, arms up, a few fans holding phones high, confetti-like flecks of light. Realistic, joyful.",
+          "motion": "The crowd jumps and screams; phones bounce with the celebration. A slow pan across the section."
+        },
+        {
+          "id": "06-press",
+          "seconds": 5,
+          "overlay": "laptop screen: the VUEMesh studio cutting between fans' phones",
+          "image": "Press row at courtside: a producer in a team polo with a headset works at a laptop on the table; the laptop its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. The court and players blurred in the background. Realistic.",
+          "motion": "The producer taps a key and watches the screen, then glances up at the big board and smiles. The camera holds steady; the laptop stays fixed in frame."
+        },
+        {
+          "id": "07-fancam",
+          "seconds": 5,
+          "overlay": "centre-hung board: a fan's live phone feed, with \"Fan cam · section 214\"",
+          "image": "Looking up at a centre-hung scoreboard whose screens are plain, evenly lit white rectangles, with a section of fans below pointing at it in delight. Realistic, arena lights.",
+          "motion": "A fan realises she's on the big screen, screams and waves at the board; her friends hug her. The board stays fixed in frame; slow push in."
+        },
+        {
+          "id": "08-after",
+          "seconds": 4,
+          "overlay": "phone screen: the replay with \"Shot by you\"",
+          "image": "After the game, two friends walking out of the arena concourse, one holding up her phone in landscape to show the other; its screen is a plain, evenly lit white rectangle, facing the camera, nothing on it. Crowds and warm concourse lights. Realistic, candid.",
+          "motion": "They walk and laugh, watching the phone together. The camera walks backwards in front of them, smooth. The phone stays steady between them."
+        }
+      ],
+      "edit": {
+        "intent": "Punchy and rising: fast cuts, the dunk in slow motion, a flash when the fan sees herself on the big screen.",
+        "look": "cool",
+        "title": {
+          "on": "01-arena",
+          "text": "Game Night",
+          "sub": "Every seat is a camera",
+          "from": 0.6,
+          "to": 2.6
+        },
+        "end": {
+          "text": "Every seat is a camera.",
+          "sub": "vuemesh.com",
+          "seconds": 3.0
+        },
+        "cuts": [
+          {
+            "shot": "01-arena",
+            "in": 0.4,
+            "out": 3.2,
+            "into": "black",
+            "dur": 0.6
+          },
+          {
+            "shot": "02-board",
+            "in": 0.5,
+            "out": 3.0,
+            "into": "cut"
+          },
+          {
+            "shot": "03-fans",
+            "in": 0.4,
+            "out": 2.4,
+            "into": "cut"
+          },
+          {
+            "shot": "04-dunk",
+            "in": 0.3,
+            "out": 3.3,
+            "speed": 0.6,
+            "into": "cut"
+          },
+          {
+            "shot": "05-reaction",
+            "in": 0.3,
+            "out": 2.5,
+            "into": "cut"
+          },
+          {
+            "shot": "06-press",
+            "in": 0.5,
+            "out": 3.0,
+            "into": "cut"
+          },
+          {
+            "shot": "07-fancam",
+            "in": 0.4,
+            "out": 4.0,
+            "into": "flash",
+            "dur": 0.2
+          },
+          {
+            "shot": "08-after",
+            "in": 0.5,
+            "out": 3.5,
+            "into": "dissolve",
+            "dur": 0.6
+          }
+        ]
+      },
+      "music": {
+        "tags": "instrumental, stadium sports anthem, stomp clap, big tom drums, brass stabs, hype, rising energy, arena rock, 110 bpm",
+        "lyrics": "[instrumental]",
+        "bpm": 110,
+        "variants": 3,
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+      }
+    }
+  ]
+}

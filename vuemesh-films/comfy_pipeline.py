@@ -161,8 +161,6 @@ def find_roles(wf, stage):
             roles["prompt"] = texts
     for nid, n in wf.items():
         ins = n.get("inputs", {})
-        if any(isinstance(ins.get(k), int) and not isinstance(ins.get(k), bool) for k in ("seed", "noise_seed")):
-            roles["seed"].append(nid)
         if isinstance(ins.get("width"), int) and isinstance(ins.get("height"), int):
             roles["size"].append(nid)
         if any(isinstance(ins.get(k), int) for k in ("length", "num_frames", "frames", "frame_count")):
@@ -183,6 +181,7 @@ def find_roles(wf, stage):
             roles["bpm"].append(nid)
     for role, ids in by_title.items():
         roles[role] = ids
+    roles["seed"] = list(dict.fromkeys(nid for nid, _ in seed_slots(wf)))
     return roles
 
 
@@ -191,6 +190,43 @@ def need(roles, wanted, path):
     if missing:
         hints = ", ".join(f"{r} (title a node {TITLES[r][0] if r != 'prompt' else 'IMAGE_PROMPT or VIDEO_PROMPT'})" for r in missing)
         raise PipelineError(f"In {os.path.basename(path)} I couldn't find: {hints}. Run: python comfy_pipeline.py inspect {os.path.basename(path)}")
+
+
+def _is_int(v):
+    return isinstance(v, int) and not isinstance(v, bool)
+
+
+def seed_slots(wf):
+    """[(node_id, input)] holding the seed: a seed typed into a node, or, when it comes from another node
+    (a PrimitiveInt, an "Int" or "Seed" node: common in newer workflows), that node's own value.
+    A node titled SEED always counts."""
+    slots = []
+    for nid, n in wf.items():
+        ins = n.get("inputs", {})
+        if title(n) in TITLES["seed"]:
+            slots += [(nid, k) for k, v in ins.items() if _is_int(v)]
+        for k in ("seed", "noise_seed"):
+            v = ins.get(k)
+            if _is_int(v):
+                slots.append((nid, k))
+            elif is_link(v) and v[0] in wf:
+                src = wf[v[0]].get("inputs", {})
+                for sk in ("value", "seed", "noise_seed", "int", "number"):
+                    if _is_int(src.get(sk)):
+                        slots.append((v[0], sk))
+                        break
+    seen, out = set(), []
+    for x in slots:
+        if x not in seen:
+            seen.add(x)
+            out.append(x)
+    return out
+
+
+def set_seed(wf, value):
+    """Give every seed in the workflow this value (the ones that feed others included)."""
+    for nid, k in seed_slots(wf):
+        wf[nid]["inputs"][k] = value
 
 
 def set_inputs(wf, ids, values):
@@ -322,7 +358,7 @@ def stage_stills(s, args):
             set_inputs(wf, roles["prompt"], [((text_key(wf[roles["prompt"][0]]),), shot["image"])])
             if roles["negative"] and o.get("negative") is not None:
                 set_inputs(wf, roles["negative"], [((text_key(wf[roles["negative"][0]]),), o["negative"])])
-            set_inputs(wf, roles["seed"], [(("seed", "noise_seed"), shot.get("seed", 1000) * 100 + v if args.fixed_seeds else random.randrange(1, 2**31))])
+            set_seed(wf, shot.get("seed", 1000) * 100 + v if args.fixed_seeds else random.randrange(1, 2**31))
             set_inputs(wf, roles["size"], [(("width",), o["width"]), (("height",), o["height"])])
             set_inputs(wf, roles["save"], [(("filename_prefix",), f"vuemesh/{film['id']}_{shot['id']}_v{v}")])
             files = comfy.files(comfy.wait(comfy.queue(wf), s["timeout_image_s"], f"{key} still {v}/{n}"), (".png", ".jpg", ".jpeg", ".webp"))
@@ -357,7 +393,7 @@ def stage_videos(s, args):
         set_inputs(wf, roles["prompt"], [((text_key(wf[roles["prompt"][0]]),), shot["motion"])])
         if roles["negative"] and o.get("negative") is not None:
             set_inputs(wf, roles["negative"], [((text_key(wf[roles["negative"][0]]),), o["negative"])])
-        set_inputs(wf, roles["seed"], [(("seed", "noise_seed"), random.randrange(1, 2**31))])
+        set_seed(wf, random.randrange(1, 2**31))
         set_inputs(wf, roles["size"], [(("width",), o["width"]), (("height",), o["height"])])
         set_inputs(wf, roles["length"], [(("length", "num_frames", "frames", "frame_count"), frames_for(shot.get("seconds", 4), fps))])
         set_inputs(wf, roles["fps"], [(("frame_rate", "fps"), fps)])
@@ -429,7 +465,12 @@ def stage_music(s, args):
             set_inputs(wf, roles["seconds"], [(("seconds", "duration", "audio_duration"), seconds)])
             if m.get("bpm"):
                 set_inputs(wf, roles["bpm"], [(("bpm",), m["bpm"])])
-            set_inputs(wf, roles["seed"], [(("seed", "noise_seed"), random.randrange(1, 2**31))])
+            # (ACE-Step 1.5 also takes a key and a time signature: optional per film)
+            if m.get("keyscale"):
+                set_inputs(wf, roles["tags"], [(("keyscale",), m["keyscale"])])
+            if m.get("timesignature"):
+                set_inputs(wf, roles["tags"], [(("timesignature",), str(m["timesignature"]))])
+            set_seed(wf, random.randrange(1, 2**31))
             set_inputs(wf, roles["save"], [(("filename_prefix",), f"vuemesh/music_{film['id']}_v{v}")])
             files = comfy.files(comfy.wait(comfy.queue(wf), s.get("timeout_music_s", 900), f"{film['id']} music {v}/{n} ({seconds} s)"), AUDIO)
             if not files:

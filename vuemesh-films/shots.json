@@ -183,7 +183,9 @@
         "lyrics": "[instrumental]",
         "bpm": 72,
         "variants": 3,
-        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little.",
+        "keyscale": "G major",
+        "timesignature": "4"
       }
     },
     {
@@ -350,7 +352,9 @@
         "lyrics": "[instrumental]",
         "bpm": 128,
         "variants": 3,
-        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little.",
+        "keyscale": "E minor",
+        "timesignature": "4"
       }
     },
     {
@@ -490,7 +494,9 @@
         "lyrics": "[instrumental]",
         "bpm": 110,
         "variants": 3,
-        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little."
+        "note": "Instrumental only (vocals from music models tend to come out garbled). Length follows the cut, plus a little.",
+        "keyscale": "A minor",
+        "timesignature": "4"
       }
     }
   ]
